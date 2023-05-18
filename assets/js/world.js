@@ -6,22 +6,24 @@ class World {
         this.element = config.element;
         this.canvas = this.element.querySelector(".game-canvas");
         this.context = this.canvas.getContext("2d");
+        this.map = null;
     }
 
     init() {
-        const map = new ImageLoader().load(
-            "assets/graphic/map/demo.png",
-            () => { this.context.drawImage(map, 0, 0); }
-        );
+        this.map = new DemoMap().getMap();
+        this.loop();
+    }
 
-        const hero = new Sprite({
-                x: 1,
-                y: 4,
-                name: "coderman"
+    loop() {
+        this.map.renderLowerLayer(this.context);
+
+        Object.values(this.map.sprites).forEach(sprite => {
+            sprite.render(this.context);
         });
-        setTimeout(() => {
-            hero.render(this.context);
-        }, 200);
-        console.log("Hello from the world!", this);
+
+        this.map.renderUpperLayer(this.context);
+        requestAnimationFrame(() => {
+            this.loop();
+        });
     }
 }
