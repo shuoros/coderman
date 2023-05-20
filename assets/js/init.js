@@ -1,4 +1,3 @@
-
 (function() {
 
     const world = new World({

@@ -13,12 +13,17 @@ class Animation {
                 this.frames = this.character.width / Sprite.LENGTH; 
             }
         );
+        this.shadow = utils.loadImage(
+            Animation.PATH + this.sprite.name + "/shadow.png",
+            () => { this.isShadowLoaded = true; }
+        );
     }
 
     render(context) {
         const x = this.sprite.x - Sprite.X_OFFSET;
         const y = this.sprite.y - Sprite.Y_OFFSET;
         
+        this.isShadowLoaded && context.drawImage(this.shadow, x, y);
         this.isCharacterLoaded && context.drawImage(
             this.character,
             this.frame * Sprite.LENGTH, 0,

@@ -8,13 +8,31 @@ class Sprite {
         this.x = utils.positionInGrid(config.x);
         this.y = utils.positionInGrid(config.y);
         this.name = config.name;
-        this.idle = new Animation({
+        this.direction = config.direction || Direction.DOWN;
+        this.status = config.direction || Status.IDLE;
+        this.animations = {
+            "IDLE-UP": new Animation({
                 sprite: this,
-                status: "idle"
-        });
+                status: "idle-up"
+            }),
+            "IDLE-RIGHT": new Animation({
+                sprite: this,
+                status: "idle-right"
+            }),
+            "IDLE-DOWN": new Animation({
+                sprite: this,
+                status: "idle-down"
+            }),
+            "IDLE-LEFT": new Animation({
+                sprite: this,
+                status: "idle-left"
+            })
+        };
     }
 
+    update(state) {}
+
     render(context) {
-        this.idle.render(context);
+        this.animations[this.status + "-" + this.direction].render(context);
     }
 }
