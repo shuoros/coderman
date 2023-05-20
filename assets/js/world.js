@@ -15,6 +15,8 @@ class World {
     }
 
     loop() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
         this.map.renderLowerLayer(this.context);
 
         Object.values(this.map.sprites).forEach(sprite => {
