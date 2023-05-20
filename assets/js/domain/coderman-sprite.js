@@ -1,14 +1,10 @@
-class CoderManSprite {
+class CoderManSprite extends Sprite {
 
     constructor(x, y) {
-        this.sprite = new Sprite({
+        super({
             x: x,
             y: y,
             name: "coderman"
         });
-    }
-
-    getSprite() {
-        return this.sprite;
     }
 }

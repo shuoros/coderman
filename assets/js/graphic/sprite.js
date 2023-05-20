@@ -5,8 +5,8 @@ class Sprite {
     static Y_OFFSET = 12;
 
     constructor(config) {
-        this.x = config.x;
-        this.y = config.y;
+        this.x = utils.positionInGrid(config.x);
+        this.y = utils.positionInGrid(config.y);
         this.name = config.name;
         this.idle = new Animation({
                 sprite: this,

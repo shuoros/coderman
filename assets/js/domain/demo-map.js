@@ -1,16 +1,12 @@
-class DemoMap {
+class DemoMap extends Map {
 
     constructor() {
-        this.map = new Map({
+        super({
             sprites: {
-                coderman: new CoderManSprite(utils.positionInGrid(5), utils.positionInGrid(6)).getSprite()
+                coderman: new CoderManSprite(5, 6)
             },
             lowerLayer: "demoLower.png",
             upperLayer: "demoUpper.png"
         });
-    }
-
-    getMap() {
-        return this.map;
     }
 }

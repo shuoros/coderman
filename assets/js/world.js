@@ -10,7 +10,7 @@ class World {
     }
 
     init() {
-        this.map = new DemoMap().getMap();
+        this.map = new DemoMap();
         this.loop();
     }
 
