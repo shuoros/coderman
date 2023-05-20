@@ -1,7 +1,8 @@
 class Sprite {
 
+    static LENGTH = 32;
     static X_OFFSET = 8;
-    static Y_OFFSET = 10;
+    static Y_OFFSET = 12;
 
     constructor(config) {
         this.x = config.x;

@@ -15,17 +15,19 @@ class World {
     }
 
     loop() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        this.map.renderLowerLayer(this.context);
+        setTimeout(() => {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        Object.values(this.map.sprites).forEach(sprite => {
-            sprite.render(this.context);
-        });
-
-        this.map.renderUpperLayer(this.context);
-        requestAnimationFrame(() => {
-            this.loop();
-        });
+            this.map.renderLowerLayer(this.context);
+    
+            Object.values(this.map.sprites).forEach(sprite => {
+                sprite.render(this.context);
+            });
+    
+            this.map.renderUpperLayer(this.context);
+            requestAnimationFrame(() => {
+                this.loop();
+            });
+        }, 100);
     }
 }
