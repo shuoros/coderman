@@ -1,6 +1,10 @@
-class ImageLoader {
+const utils = {
 
-    load(src, onload) {
+    positionInGrid(number){
+        return number * World.TILE;
+    },
+
+    loadImage(src, onload) {
         const image = new Image();
         image.src = src;
         image.onload = onload;

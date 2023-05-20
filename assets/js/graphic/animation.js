@@ -6,7 +6,7 @@ class Animation {
         this.sprite = config.sprite;
         this.status = config.status;
         this.frame = 0;
-        this.character = new ImageLoader().load(
+        this.character = utils.loadImage(
             Animation.PATH + this.sprite.name + "/" + this.status + ".png",
             () => {
                 this.isCharacterLoaded = true;
@@ -16,8 +16,8 @@ class Animation {
     }
 
     render(context) {
-        const x = this.sprite.x * World.TILE - Sprite.X_OFFSET;
-        const y = this.sprite.y * World.TILE - Sprite.Y_OFFSET;
+        const x = this.sprite.x - Sprite.X_OFFSET;
+        const y = this.sprite.y - Sprite.Y_OFFSET;
         
         this.isCharacterLoaded && context.drawImage(
             this.character,

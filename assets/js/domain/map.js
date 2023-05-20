@@ -4,11 +4,11 @@ class Map {
 
     constructor(config) {
         this.sprites = config.sprites;
-        this.lowerLayer = new ImageLoader().load(
+        this.lowerLayer = utils.loadImage(
             Map.PATH + config.lowerLayer,
             ()=>{}
         );
-        this.upperLayer = new ImageLoader().load(
+        this.upperLayer = utils.loadImage(
             Map.PATH + config.upperLayer,
             ()=>{}
         );

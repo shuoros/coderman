@@ -21,6 +21,7 @@ class World {
             this.map.renderLowerLayer(this.context);
     
             Object.values(this.map.sprites).forEach(sprite => {
+                sprite.x += 1;
                 sprite.render(this.context);
             });
     
