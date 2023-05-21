@@ -1,7 +1,7 @@
 class KeyboardController {
 
     constructor() {
-        this.clipboard = [];
+        this.clipboard = null;
         this.map = {
             "ArrowUp": Direction.UP,
             "ArrowRight": Direction.RIGHT,
@@ -17,19 +17,19 @@ class KeyboardController {
     init() {
         document.addEventListener("keydown", e =>{
             const key = this.map[e.code];
-            if(key && this.clipboard.indexOf(key) === -1) {
-                this.clipboard.unshift(key);
+            if(key && this.clipboard == null) {
+                this.clipboard = key;
             }
         });
         document.addEventListener("keyup", e =>{
             const key = this.map[e.code];
-            if(key && this.clipboard.indexOf(key) > -1) {
-                this.clipboard.splice(key, 1);
+            if(key && this.clipboard == key) {
+                this.clipboard = null;
             }
         });
     }
 
     get currentKey() {
-        return this.clipboard[0];
+        return this.clipboard;
     }
 }
