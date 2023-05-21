@@ -11,6 +11,9 @@ Coderman is a 2D role-playing game in pixel art style. The story of this game is
 - Animation for Sprite
 - Keyboard controller to controlling character movement
 
+## Install & Run
+Simply clone this repo into your machine and open `index.html` up on your browser. (Google Chrome recommended) 
+
 ## Authors
 Coderman is developed by [Soroush Shemshadi](https://github.com/shuoros) and [contributors](CONTRIBUTORS.md).
 
