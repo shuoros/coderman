@@ -1,10 +1,10 @@
-class Dude extends Person {
+class Coderman extends Person {
 
     constructor(x, y) {
         super({
             x: x,
             y: y,
-            name: "dude",
+            name: "coderman",
             isControllable: true
         });
     }
