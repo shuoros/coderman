@@ -24,7 +24,8 @@ class World {
         
         Object.values(this.map.sprites).forEach(sprite => {
             sprite.update({
-                keyboard: this.keyboardController.currentKey
+                keyboard: this.keyboardController.currentKey,
+                map: this.map
             });
         });
 

@@ -13,19 +13,26 @@ class Person extends Sprite {
     }
 
     update(state) {
-        this.updatePosition();
-
+        if(this.movingProgressRemaining > 0) {
+            this.updatePosition();
+        }
         if(this.isControllable && this.movingProgressRemaining === 0 && state.keyboard) {
-            this.direction = state.keyboard;
-            this.movingProgressRemaining = World.TILE;
+            this.startBehavior(state, {
+                direction: state.keyboard
+            });
         }
     }
 
     updatePosition() {
-        if(this.movingProgressRemaining > 0) {
-            const [property, toChange] = this.directionUpdate[this.direction];
-            this[property] += toChange;
-            this.movingProgressRemaining -=1;
+        const [property, toChange] = this.directionUpdate[this.direction];
+        this[property] += toChange;
+        this.movingProgressRemaining -=1;
+    }
+
+    startBehavior(state, behavior) {
+        this.direction = behavior.direction;
+        if(!state.map.isSpaceTaken(this.x, this.y, this.direction)){
+            this.movingProgressRemaining = World.TILE;
         }
     }
 }
