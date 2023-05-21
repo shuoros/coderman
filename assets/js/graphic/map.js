@@ -14,11 +14,16 @@ class Map {
         );
     }
 
-    renderLowerLayer(context) {
-        context.drawImage(this.lowerLayer, 0, 0);
+    renderLowerLayer(context, cameraPerson) {
+        context.drawImage(
+            this.lowerLayer,
+            utils.positionInGrid(10.5) - cameraPerson.x,
+            utils.positionInGrid(6) - cameraPerson.y);
     }
 
-    renderUpperLayer(context) {
-        context.drawImage(this.upperLayer, 0, 0);
+    renderUpperLayer(context, cameraPerson) {
+        context.drawImage(this.upperLayer,
+            utils.positionInGrid(10.5) - cameraPerson.x,
+            utils.positionInGrid(6) - cameraPerson.y);
     }
 }

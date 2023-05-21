@@ -20,16 +20,21 @@ class World {
     loop() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.map.renderLowerLayer(this.context);
-
+        const cameraPerson = this.map.sprites.coderman;
+        
         Object.values(this.map.sprites).forEach(sprite => {
             sprite.update({
                 keyboard: this.keyboardController.currentKey
             });
-            sprite.render(this.context);
         });
 
-        this.map.renderUpperLayer(this.context);
+        this.map.renderLowerLayer(this.context, cameraPerson);
+
+        Object.values(this.map.sprites).forEach(sprite => {
+            sprite.render(this.context, cameraPerson);
+        });
+
+        this.map.renderUpperLayer(this.context, cameraPerson);
         requestAnimationFrame(() => {
             this.loop();
         });    

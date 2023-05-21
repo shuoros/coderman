@@ -32,7 +32,7 @@ class Sprite {
 
     update(state) {}
 
-    render(context) {
-        this.animations[this.status + "-" + this.direction].render(context);
+    render(context, cameraPerson) {
+        this.animations[this.status + "-" + this.direction].render(context, cameraPerson);
     }
 }
