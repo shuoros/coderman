@@ -1,4 +1,4 @@
-class Person extends Sprite {
+class Person extends AbstractSprite {
 
     constructor(config) {
         super(config);

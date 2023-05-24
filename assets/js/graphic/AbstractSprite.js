@@ -1,4 +1,4 @@
-class Sprite {
+class AbstractSprite {
 
     static LENGTH = 32;
     static X_OFFSET = 8;

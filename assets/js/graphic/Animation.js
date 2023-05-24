@@ -10,21 +10,21 @@ class Animation {
             Animation.PATH + this.sprite.name + "/" + this.status + ".png",
             () => {
                 this.isCharacterLoaded = true;
-                this.frames = this.character.width / Sprite.LENGTH; 
+                this.frames = this.character.width / AbstractSprite.LENGTH; 
             }
         );
     }
 
     render(context, cameraPerson) {
-        const x = this.sprite.x - Sprite.X_OFFSET + utils.positionInGrid(10.5) - cameraPerson.x;
-        const y = this.sprite.y - Sprite.Y_OFFSET + utils.positionInGrid(6) - cameraPerson.y;
+        const x = this.sprite.x - AbstractSprite.X_OFFSET + utils.positionInGrid(10.5) - cameraPerson.x;
+        const y = this.sprite.y - AbstractSprite.Y_OFFSET + utils.positionInGrid(6) - cameraPerson.y;
         
         this.isCharacterLoaded && context.drawImage(
             this.character,
-            this.frame * Sprite.LENGTH, 0,
-            Sprite.LENGTH, Sprite.LENGTH,
+            this.frame * AbstractSprite.LENGTH, 0,
+            AbstractSprite.LENGTH, AbstractSprite.LENGTH,
             x, y,
-            Sprite.LENGTH, Sprite.LENGTH
+            AbstractSprite.LENGTH, AbstractSprite.LENGTH
         );
 
         this.frame++;

@@ -13,7 +13,7 @@ class World {
     init() {
         this.keyboardController = new KeyboardController();
         this.keyboardController.init();
-        this.map = new Demo();
+        this.map = new DemoMap();
         this.loop();
     }
 

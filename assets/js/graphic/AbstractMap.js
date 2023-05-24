@@ -1,15 +1,15 @@
-class Map {
+class AbstractMap {
 
     static PATH = "assets/graphic/map/";
 
     constructor(config) {
         this.sprites = config.sprites;
         this.lowerLayer = utils.loadImage(
-            Map.PATH + config.lowerLayer,
+            AbstractMap.PATH + config.lowerLayer,
             ()=>{}
         );
         this.upperLayer = utils.loadImage(
-            Map.PATH + config.upperLayer,
+            AbstractMap.PATH + config.upperLayer,
             ()=>{}
         );
         this.walls = config.walls || {};

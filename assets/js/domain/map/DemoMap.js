@@ -1,4 +1,4 @@
-class Demo extends Map {
+class DemoMap extends AbstractMap {
     
     constructor() {
         super({
