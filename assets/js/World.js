@@ -13,29 +13,36 @@ class World {
     init() {
         this.keyboardController = new KeyboardController();
         this.keyboardController.init();
+        this.frameRate = new FrameRate(60);
+        this.frameRate.init();
         this.map = new DemoMap();
         this.loop();
     }
 
     loop() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        if(this.frameRate.shouldRender()) {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        const cameraPerson = this.map.sprites.coderman;
-        
-        Object.values(this.map.sprites).forEach(sprite => {
-            sprite.update({
-                keyboard: this.keyboardController.currentKey,
-                map: this.map
+            const cameraPerson = this.map.sprites.coderman;
+            
+            Object.values(this.map.sprites).forEach(sprite => {
+                sprite.update({
+                    keyboard: this.keyboardController.currentKey,
+                    map: this.map
+                });
             });
-        });
 
-        this.map.renderLowerLayer(this.context, cameraPerson);
+            this.map.renderLowerLayer(this.context, cameraPerson);
 
-        Object.values(this.map.sprites).forEach(sprite => {
-            sprite.render(this.context, cameraPerson);
-        });
+            Object.values(this.map.sprites).forEach(sprite => {
+                sprite.render(this.context, cameraPerson);
+            });
 
-        this.map.renderUpperLayer(this.context, cameraPerson);
+            this.map.renderUpperLayer(this.context, cameraPerson);
+
+            this.frameRate.calculate();
+        }
+
         requestAnimationFrame(() => {
             this.loop();
         });    
