@@ -12,7 +12,7 @@ class AbstractSprite {
         this.direction = config.direction || Direction.DOWN;
         this.status = config.direction || Status.IDLE;
         this.currentFrame = 0;
-        this.frameProgressLimit = config.frameProgressLimit || 2;
+        this.frameProgressLimit = config.frameProgressLimit || 4;
         this.frameProgress = this.frameProgressLimit;
         this.spriteSheet = utils.loadImage(
             AbstractSprite.PATH + this.name + ".png",

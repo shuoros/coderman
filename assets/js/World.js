@@ -13,14 +13,14 @@ class World {
     init() {
         this.keyboardController = new KeyboardController();
         this.keyboardController.init();
-        this.frameRate = new FrameRate(60);
-        this.frameRate.init();
+        // this.frameRate = new FrameRate(60);
+        // this.frameRate.init();
         this.map = new DemoMap();
         this.loop();
     }
 
     loop() {
-        if(this.frameRate.shouldRender()) {
+        // if(this.frameRate.shouldRender()) {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
             const cameraPerson = this.map.sprites.coderman;
@@ -40,8 +40,8 @@ class World {
 
             this.map.renderUpperLayer(this.context, cameraPerson);
 
-            this.frameRate.calculate();
-        }
+        //     this.frameRate.calculate();
+        // }
 
         requestAnimationFrame(() => {
             this.loop();
