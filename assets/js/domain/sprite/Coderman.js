@@ -5,6 +5,8 @@ class Coderman extends Person {
             x: x,
             y: y,
             name: "coderman",
+            direction: Direction.UP,
+            status: Status.IDLE,
             isControllable: true,
             animations: {
                 "IDLE-DOWN": [

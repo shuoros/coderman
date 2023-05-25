@@ -3,7 +3,7 @@ class Person extends AbstractSprite {
     constructor(config) {
         super(config);
         this.isControllable = config.isControllable || false;
-        this.movingProgressRemaining = World.TILE;
+        this.movingProgressRemaining = 0;
         this.directionUpdate = {
             "UP": ["y", -1],
             "RIGHT": ["x", 1],
@@ -36,7 +36,8 @@ class Person extends AbstractSprite {
 
     startBehavior(state, behavior) {
         this.direction = behavior.direction;
-        if(!state.map.isSpaceTaken(this.x, this.y, this.direction)){
+        if(!state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+            state.map.moveBlock(this.x, this.y, this.direction);
             this.movingProgressRemaining = World.TILE;
         }
     }

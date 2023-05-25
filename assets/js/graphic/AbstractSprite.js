@@ -6,11 +6,12 @@ class AbstractSprite {
     static Y_OFFSET = 12;
 
     constructor(config) {
+        this.isMounted = false;
         this.x = utils.positionInGrid(config.x);
         this.y = utils.positionInGrid(config.y);
         this.name = config.name;
         this.direction = config.direction || Direction.DOWN;
-        this.status = config.direction || Status.IDLE;
+        this.status = config.status || Status.IDLE;
         this.currentFrame = 0;
         this.frameProgressLimit = config.frameProgressLimit || 4;
         this.frameProgress = this.frameProgressLimit;
@@ -26,6 +27,16 @@ class AbstractSprite {
 
     get frame() {
         return this.animations[this.status + "-" + this.direction][this.currentFrame];
+    }
+
+    mount(map) {
+        this.isMounted = true;
+        map.block(this.x, this.y);
+    }
+
+    unmount(map) {
+        this.isMounted = false;
+        map.unblock(this.x, this.y);
     }
 
     update(state) {
@@ -55,7 +66,5 @@ class AbstractSprite {
             x, y,
             AbstractSprite.LENGTH, AbstractSprite.LENGTH
         );
-
-        
     }
 }

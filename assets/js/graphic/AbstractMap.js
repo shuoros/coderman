@@ -22,18 +22,18 @@ class AbstractMap {
         return this.walls[`${x},${y}`] || false;
     }
 
-    addWall(x, y) {
+    block(x, y) {
         this.walls[`${x},${y}`] = true;
     }
 
-    removeWall(x, y) {
+    unblock(x, y) {
         delete this.walls[`${x},${y}`];
     }
 
-    moveWall(currentX, currentY, direction) {
-        this.removeWall(currentX, currentY);
+    moveBlock(currentX, currentY, direction) {
+        this.unblock(currentX, currentY);
         const {x, y} = utils.nextPosition(currentX, currentY, direction);
-        this.addWall(currentX, currentY);
+        this.block(x, y);
     }
 
     renderLowerLayer(context, cameraPerson) {
