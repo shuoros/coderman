@@ -17,7 +17,11 @@ class Person extends AbstractSprite {
         if(this.movingProgressRemaining > 0) {
             this.updatePosition();
         }
+        if(this.movingProgressRemaining === 0) {
+            this.status = Status.IDLE;
+        }
         if(this.isControllable && this.movingProgressRemaining === 0 && state.keyboard) {
+            this.status = Status.WALK;
             this.startBehavior(state, {
                 direction: state.keyboard
             });
