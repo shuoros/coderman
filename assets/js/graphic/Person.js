@@ -13,6 +13,7 @@ class Person extends AbstractSprite {
     }
 
     update(state) {
+        super.update(state);
         if(this.movingProgressRemaining > 0) {
             this.updatePosition();
         }

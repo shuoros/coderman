@@ -1,6 +1,8 @@
 class AbstractMap {
 
     static PATH = "assets/graphic/map/";
+    static X_CENTER = 10.5;
+    static Y_CENTER = 6;
 
     constructor(config) {
         this.sprites = config.sprites;
