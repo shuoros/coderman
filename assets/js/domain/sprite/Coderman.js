@@ -1,13 +1,13 @@
 class Coderman extends Person {
 
-    constructor(x, y) {
+    constructor(config) {
         super({
-            x: x,
-            y: y,
+            x: config.x,
+            y: config.y,
             name: "coderman",
-            direction: Direction.UP,
-            status: Status.IDLE,
-            isControllable: true,
+            direction: config.direction || Direction.DOWN,
+            status: config.status || Status.IDLE,
+            isControllable: config.isControllable || false,
             animations: {
                 "IDLE-DOWN": [
                     [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]

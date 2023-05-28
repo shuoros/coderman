@@ -3,8 +3,17 @@ class DemoMap extends AbstractMap {
     constructor() {
         super({
             sprites: {
-                coderman: new Coderman(5, 10),
-                samurai: new Samurai(2, 8)
+                coderman: new Coderman({
+                    x: 5, 
+                    y: 10,
+                    direction: Direction.UP,
+                    isControllable: true
+                }),
+                samurai: new Samurai({
+                    x: 2, 
+                    y: 8,
+                    directoin: Direction.RIGHT
+                })
             },
             lowerLayer: "demoLower.png",
             upperLayer: "demoUpper.png",
