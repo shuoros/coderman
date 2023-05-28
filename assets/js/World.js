@@ -16,7 +16,9 @@ class World {
         // this.frameRate = new FrameRate(60);
         // this.frameRate.init();
         this.map = new DemoMap();
-        Object.values(this.map.sprites).forEach(sprite => {
+        Object.keys(this.map.sprites).forEach(key => {
+            let sprite = this.map.sprites[key];
+            sprite.id = key;
             sprite.mount(this.map);
         });
         this.loop();

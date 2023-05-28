@@ -6,6 +6,7 @@ class AbstractSprite {
     static Y_OFFSET = 12;
 
     constructor(config) {
+        this.id = null;
         this.isMounted = false;
         this.x = utils.positionInGrid(config.x);
         this.y = utils.positionInGrid(config.y);
