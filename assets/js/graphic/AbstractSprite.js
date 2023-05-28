@@ -24,6 +24,8 @@ class AbstractSprite {
             }
         );
         this.animations = config.animations;
+        this.behaviors = config.behaviors || [];
+        this.currentBehavior = 0;
     }
 
     get frame() {
@@ -33,11 +35,36 @@ class AbstractSprite {
     mount(map) {
         this.isMounted = true;
         map.block(this.x, this.y);
+
+        if(this.behaviors != 0) {
+            setTimeout(() => {
+                this. doBehavior(map);
+            }, 10);
+        }
     }
 
     unmount(map) {
         this.isMounted = false;
         map.unblock(this.x, this.y);
+    }
+
+    async doBehavior(map) {
+        if(!map.isCutScenePlaying) {
+            let behavior = this.behaviors[this.currentBehavior];
+            behavior.who = this.id;
+
+            const eventHandler = new EventHandler({
+                map,
+                event: behavior
+            });
+            await eventHandler.init();
+
+            this.currentBehavior++;
+            if(this.currentBehavior === this.behaviors.length) {
+                this.currentBehavior = 0;
+            }
+        }
+        this.doBehavior(map);
     }
 
     update(state) {

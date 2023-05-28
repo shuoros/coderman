@@ -12,7 +12,10 @@ class DemoMap extends AbstractMap {
                 samurai: new Samurai({
                     x: 2, 
                     y: 8,
-                    directoin: Direction.RIGHT
+                    directoin: Direction.RIGHT,
+                    behaviors: [
+                        { status: Status.WALK, direction: Direction.RIGHT, time: 400 }
+                    ]
                 })
             },
             lowerLayer: "demoLower.png",

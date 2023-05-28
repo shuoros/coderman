@@ -15,6 +15,7 @@ class AbstractMap {
             ()=>{}
         );
         this.walls = config.walls || {};
+        this.isCutScenePlaying = false;
     }
 
     isSpaceTaken(currentX, currentY, direction) {
