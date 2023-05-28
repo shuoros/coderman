@@ -37,7 +37,7 @@ class Person extends AbstractSprite {
         this.movingProgressRemaining -=1;
         if(this.movingProgressRemaining === 0) {
             utils.emitEvent(Person.WALKING_COMPLETED_EVENT, {
-                whoId: super.id
+                whoId: this.id
             });
         }
     }

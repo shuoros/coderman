@@ -20,6 +20,7 @@ class EventHandler {
         const handler = e => {
             if(e.detail.whoId === this.event.who) {
                 document.removeEventListener(Person.WALKING_COMPLETED_EVENT, handler);
+                resolve();
             }
         };
         document.addEventListener(Person.WALKING_COMPLETED_EVENT, handler);

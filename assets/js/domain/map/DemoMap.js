@@ -14,7 +14,10 @@ class DemoMap extends AbstractMap {
                     y: 8,
                     directoin: Direction.RIGHT,
                     behaviors: [
-                        { status: Status.WALK, direction: Direction.RIGHT, time: 400 }
+                        { status: Status.WALK, direction: Direction.RIGHT, time: 400 },
+                        { status: Status.WALK, direction: Direction.UP, time: 400 },
+                        { status: Status.WALK, direction: Direction.LEFT, time: 400 },
+                        { status: Status.WALK, direction: Direction.DOWN, time: 400 }
                     ]
                 })
             },
