@@ -1,6 +1,7 @@
 class Person extends AbstractSprite {
 
     static WALKING_COMPLETED_EVENT = "personWalkingComplete";
+    static IDLE_COMPLETED_EVENT = "personIdleComplete";
 
     constructor(config) {
         super(config);
@@ -44,11 +45,18 @@ class Person extends AbstractSprite {
     startBehavior(state, behavior) {
         this.direction = behavior.direction;
         this.status = behavior.status;
-        if(this.status === Status.WALK){
+        if(this.status === Status.WALK) {
             if(!state.map.isSpaceTaken(this.x, this.y, this.direction)) {
                 state.map.moveBlock(this.x, this.y, this.direction);
                 this.movingProgressRemaining = World.TILE;
             }
+        }
+        if(this.status === Status.IDLE) {
+            setTimeout(() => {
+                utils.emitEvent(Person.IDLE_COMPLETED_EVENT, {
+                    whoId: this.id
+                });
+            }, behavior.time);
         }
     }
 }

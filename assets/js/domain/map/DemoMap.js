@@ -14,10 +14,17 @@ class DemoMap extends AbstractMap {
                     y: 8,
                     directoin: Direction.RIGHT,
                     behaviors: [
-                        { status: Status.WALK, direction: Direction.RIGHT, time: 400 },
-                        { status: Status.WALK, direction: Direction.RIGHT, time: 400 },
-                        { status: Status.WALK, direction: Direction.LEFT, time: 400 },
-                        { status: Status.WALK, direction: Direction.LEFT, time: 400 }
+                        { status: Status.WALK, direction: Direction.RIGHT },
+                        { status: Status.IDLE, direction: Direction.RIGHT, time: 1300 },
+                        { status: Status.WALK, direction: Direction.UP },
+                        { status: Status.WALK, direction: Direction.UP },
+                        { status: Status.IDLE, direction: Direction.UP, time: 400 },
+                        { status: Status.WALK, direction: Direction.LEFT },
+                        { status: Status.IDLE, direction: Direction.LEFT, time: 1000},
+                        { status: Status.WALK, direction: Direction.DOWN },
+                        { status: Status.IDLE, direction: Direction.DOWN, time: 800 },
+                        { status: Status.WALK, direction: Direction.DOWN },
+                        { status: Status.IDLE, direction: Direction.RIGHT, time: 300 },
                     ]
                 })
             },
