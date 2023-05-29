@@ -29,7 +29,8 @@ class EventHandler {
             map: this.map
         }, {
             status: Status.WALK,
-            direction: this.event.direction
+            direction: this.event.direction,
+            retry: true
         });
         const handler = e => {
             if(e.detail.whoId === this.event.who) {

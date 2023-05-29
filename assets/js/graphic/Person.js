@@ -49,6 +49,10 @@ class Person extends AbstractSprite {
             if(!state.map.isSpaceTaken(this.x, this.y, this.direction)) {
                 state.map.moveBlock(this.x, this.y, this.direction);
                 this.movingProgressRemaining = World.TILE;
+            } else {
+                behavior.retry && setTimeout(() => {
+                    this.startBehavior(state, behavior);
+                }, 10);
             }
         }
         if(this.status === Status.IDLE) {
