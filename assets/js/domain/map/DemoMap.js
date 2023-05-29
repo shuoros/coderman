@@ -24,7 +24,16 @@ class DemoMap extends AbstractMap {
                         { status: Status.WALK, direction: Direction.DOWN },
                         { status: Status.IDLE, direction: Direction.DOWN, time: 800 },
                         { status: Status.WALK, direction: Direction.DOWN },
-                        { status: Status.IDLE, direction: Direction.RIGHT, time: 300 },
+                        { status: Status.IDLE, direction: Direction.RIGHT, time: 300 }
+                    ]
+                }),
+                ninja: new Ninja({
+                    x: 8, 
+                    y: 8,
+                    directoin: Direction.RIGHT,
+                    behaviors: [
+                        { status: Status.IDLE, direction: Direction.RIGHT, time: 1300 },
+                        { status: Status.IDLE, direction: Direction.LEFT, time: 1300 }
                     ]
                 })
             },
