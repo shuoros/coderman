@@ -23,7 +23,6 @@ class Person extends AbstractSprite {
             this.status = Status.IDLE;
         }
         if(this.isControllable && this.movingProgressRemaining === 0 && state.keyboard) {
-            this.status = Status.WALK;
             this.startBehavior(state, {
                 status: Status.WALK,
                 direction: state.keyboard
@@ -44,7 +43,8 @@ class Person extends AbstractSprite {
 
     startBehavior(state, behavior) {
         this.direction = behavior.direction;
-        if(behavior.status === Status.WALK){
+        this.status = behavior.status;
+        if(this.status === Status.WALK){
             if(!state.map.isSpaceTaken(this.x, this.y, this.direction)) {
                 state.map.moveBlock(this.x, this.y, this.direction);
                 this.movingProgressRemaining = World.TILE;

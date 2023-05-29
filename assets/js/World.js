@@ -31,6 +31,9 @@ class World {
             const cameraPerson = this.map.sprites.coderman;
             
             Object.values(this.map.sprites).forEach(sprite => {
+                if(sprite.id === "samurai") {
+                    console.log(sprite.direction);
+                }
                 sprite.update({
                     keyboard: this.keyboardController.currentKey,
                     map: this.map
