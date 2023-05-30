@@ -27,10 +27,12 @@ class World {
         this.map.startCutScene([
             {who: "ninja", status: Status.WALK, direction: Direction.LEFT},
             {who: "ninja", status: Status.WALK, direction: Direction.LEFT},
-            {who: "ninja", status: Status.WALK, direction: Direction.LEFT},
             {who: "coderman", status: Status.WALK, direction: Direction.UP},
-            {who: "ninja", status: Status.IDLE, direction: Direction.RIGHT, time: 5000},
-            {who: "ninja", status: Status.WALK, direction: Direction.RIGHT},
+            {who: "coderman", status: Status.WALK, direction: Direction.UP},
+            {who: "coderman", status: Status.IDLE, direction: Direction.RIGHT, time: 200},
+            {status: Status.MESSAGE, text: "Hello Coder Man! Please Save The Computer!"},
+            {who: "ninja", status: Status.IDLE, direction: Direction.LEFT, time: 300},
+            {who: "coderman", status: Status.IDLE, direction: Direction.DOWN},
             {who: "ninja", status: Status.WALK, direction: Direction.RIGHT},
             {who: "ninja", status: Status.WALK, direction: Direction.RIGHT},
         ]);

@@ -5,6 +5,14 @@ class EventHandler {
         this.event = event;
     }
 
+    MESSAGE(resolve) {
+        const message = new TextMessage({
+            text: this.event.text,
+            onComplete: () => resolve()
+        });
+        message.init(document.querySelector(".game-container"));
+    }
+
     IDLE(resolve) {
         const who = this.map.sprites[this.event.who];
         who.startBehavior({
