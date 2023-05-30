@@ -6,6 +6,7 @@ class Person extends AbstractSprite {
     constructor(config) {
         super(config);
         this.isControllable = config.isControllable || false;
+        this.isIdle = false;
         this.movingProgressRemaining = 0;
         this.directionUpdate = {
             "UP": ["y", -1],
@@ -56,10 +57,12 @@ class Person extends AbstractSprite {
             }
         }
         if(this.status === Status.IDLE) {
+            this.isIdle = true;
             setTimeout(() => {
                 utils.emitEvent(Person.IDLE_COMPLETED_EVENT, {
                     whoId: this.id
                 });
+                this.isIdle = false;
             }, behavior.time);
         }
     }

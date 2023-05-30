@@ -48,7 +48,7 @@ class AbstractSprite {
     }
 
     async doBehavior(map) {
-        if(this.hasBehaviors && !map.isCutScenePlaying) {
+        if(this.hasBehaviors && !map.isCutScenePlaying && !this.isIdle) {
             let behavior = this.behaviors[this.currentBehavior];
             behavior.who = this.id;
 
