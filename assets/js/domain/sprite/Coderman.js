@@ -8,6 +8,7 @@ class Coderman extends Person {
             direction: config.direction || Direction.DOWN,
             status: config.status || Status.IDLE,
             isControllable: config.isControllable || false,
+            behaviors: config.behaviors,
             animations: {
                 "IDLE-DOWN": [
                     [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]

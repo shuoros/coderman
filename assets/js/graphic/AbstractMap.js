@@ -18,6 +18,22 @@ class AbstractMap {
         this.isCutScenePlaying = false;
     }
 
+    async startCutScene(events) {
+        this.isCutScenePlaying = true;
+
+        for(let i = 0; i < events.length; i++) {
+            const eventHandler = new EventHandler({
+                event: events[i],
+                map: this
+            });
+            await eventHandler.init();
+        }
+
+        this.isCutScenePlaying = false;
+
+        Object.values(this.sprites).forEach(sprite => sprite.doBehavior(this));
+    }
+
     isSpaceTaken(currentX, currentY, direction) {
         const {x,y} = utils.nextPosition(currentX, currentY, direction);
         return this.walls[`${x},${y}`] || false;

@@ -25,6 +25,7 @@ class AbstractSprite {
         );
         this.animations = config.animations;
         this.behaviors = config.behaviors || [];
+        this.hasBehaviors = this.behaviors != 0;
         this.currentBehavior = 0;
     }
 
@@ -36,11 +37,9 @@ class AbstractSprite {
         this.isMounted = true;
         map.block(this.x, this.y);
 
-        if(this.behaviors != 0) {
-            setTimeout(() => {
-                this. doBehavior(map);
-            }, 10);
-        }
+        setTimeout(() => {
+            this. doBehavior(map);
+        }, 10);
     }
 
     unmount(map) {
@@ -49,7 +48,7 @@ class AbstractSprite {
     }
 
     async doBehavior(map) {
-        if(!map.isCutScenePlaying) {
+        if(this.hasBehaviors && !map.isCutScenePlaying) {
             let behavior = this.behaviors[this.currentBehavior];
             behavior.who = this.id;
 
@@ -63,8 +62,8 @@ class AbstractSprite {
             if(this.currentBehavior === this.behaviors.length) {
                 this.currentBehavior = 0;
             }
+            this.doBehavior(map);
         }
-        this.doBehavior(map);
     }
 
     update(state) {

@@ -23,7 +23,7 @@ class Person extends AbstractSprite {
         if(this.movingProgressRemaining === 0) {
             this.status = Status.IDLE;
         }
-        if(this.isControllable && this.movingProgressRemaining === 0 && state.keyboard) {
+        if(!state.map.isCutScenePlaying && this.isControllable && this.movingProgressRemaining === 0 && state.keyboard) {
             this.startBehavior(state, {
                 status: Status.WALK,
                 direction: state.keyboard
