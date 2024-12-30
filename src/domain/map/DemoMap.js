@@ -4,8 +4,8 @@ export default class DemoMap extends AbstractMap {
     
     constructor() {
         super({
-            lowerLayer: "@/assets/map/demoLower.png",
-            upperLayer: "@/assets/map/demoUpper.png",
+            lowerLayer: "image/map/demoLower.png",
+            upperLayer: "image/map/demoUpper.png",
         });
     }
 }
